@@ -1,0 +1,41 @@
+﻿
+В базе данных Redis подберите коллекцию для подсчета посещений с определенных IP-адресов.
+
+127.0.0.1:6379> hmset ip_addr:ip1 n_conn 10
+OK
+127.0.0.1:6379> hmset ip_addr:ip2 n_conn 5
+OK
+127.0.0.1:6379> hget ip_addr:ip1 n_conn
+"10"
+127.0.0.1:6379> hget ip_addr:ip2 n_conn
+"5"
+127.0.0.1:6379>
+
+При помощи базы данных Redis решите задачу поиска имени пользователя по электронному адресу 
+и наоборот, поиск электронного адреса пользователя по его имени.
+
+127.0.0.1:6379> sadd name Renata Kolya
+(integer) 2
+127.0.0.1:6379> sadd Renata@yandex.ru Renata
+(integer) 1
+127.0.0.1:6379> sadd Kolya@mail.ru Kolya
+(integer) 1
+127.0.0.1:6379> sadd email Renata@yandex.ru Kolya@mail.ru
+(integer) 2
+127.0.0.1:6379> sinter Renata@yandex.ru name
+1) "Renata"
+127.0.0.1:6379> sadd Kolya Kolya@mail.ru
+(integer) 1
+127.0.0.1:6379> sinter Kolya email
+1) "Kolya@mail.ru"
+127.0.0.1:6379>
+
+
+Организуйте хранение категорий и товарных позиций учебной базы данных shop в СУБД MongoDB.
+К сожалению, не могу подключиться к клиенту Mongo. А времени на выполнение Д/З уже нет :( В чем причина ошибки, не пойму.
+MongoDB shell version v4.0.9
+connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb
+2019-05-22T23:24:00.623+0300 E QUERY    [js] Error: couldn't connect to server 127.0.0.1:27017, connection attempt failed: SocketException: Error connecting to 127.0.0.1:27017 :: caused by :: ����������� �� �����������, �.�. �������� ��������� ������ ������ �� �����������. :
+connect@src/mongo/shell/mongo.js:343:13
+@(connect):2:6
+exception: connect failed
